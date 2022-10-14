@@ -1,4 +1,4 @@
-console.log("Functions");
+
 
 //function declaration
 function one() {
