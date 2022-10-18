@@ -125,8 +125,9 @@ const createEnemy = (nameIs, healthIs, powerIs, staminaIs) => {
     return newPlayer
   }
 
-  */
 
+
+//create a character
 
 class Character {
     //constructor
@@ -138,11 +139,18 @@ class Character {
         this.eyes = eyes;
         this.hair = hair;
         this.lovesCats = lovesCats;
-        this.lovesDogs = lovesDogs;
+        this.lovesDogs = lovesDogs || false;
         
+    }
+    //setter method
+    setHair(hairColor){
+        this.hair = hairColor;
     }
     greet(otherCharacter) {
         console.log('hi ' + otherCharacter + '!');
+    }
+    classyGreeting (otherClassyCharacter) {
+        console.log('Greetings ' + otherClassyCharacter.name + '!'); 
     }
     smite() {
         console.log('I smite thee you vile person');
@@ -152,10 +160,71 @@ class Character {
 const p1 = new Character('Luis', 633, 'red', 'silver', true, true);
 const enemy = new Character();
 
-console.log(p1.greet('bob'));
-console.log(p1.smite());
+// console.log(p1.greet('bob'));
+// console.log(p1.smite());
 
-console.log(enemy.greet('sauran'));
+//console.log(enemy.greet('sauran'));
 
-console.log(p1);
+console.log(p1); 
+p1.setHair('pink');
+
+console.log(p1.classyGreeting(p1));
+
+*/
+
+
+//Parent class
+
+class Character {
+    constructor (name, age, eyes, hair, lovesCats = true, lovesDogs) {
+      this.legs = 2;
+      this.arms = 2;
+      this.name = name;
+      this.age = age;
+      this.eyes = eyes;
+      this.hair = hair;
+      this.lovesCats = lovesCats;
+      this.lovesDogs = lovesDogs || true;
+    }
+    greet (otherCharacter) {
+      console.log('hi ' + otherCharacter + '!');
+    }
+    classyGreeting (otherClassyCharacter) {
+      console.log('Howdy ' + otherClassyCharacter.name + '!');
+    }
+    setHair (hairColor) {
+      this.hair = hairColor;
+    }
+    smite () {
+      console.log('i smited thee.');
+    }
+  
+  }
+  class Hobbit extends Character {
+    constructor(name, age, eyes, hair) {
+        super(name, age, eyes, hair);
+        this.skills = ['thievey', 'speed', 'willpower']
+    }
+    steal () {
+    console.log("let's get away!")
+    }
+    greet (otherCharacter) {
+        console.log(`Hobbit says hello to ${otherCharacter}`)
+    }
+    smite() {
+        super.smite();
+        this.steal();
+    }
+  }
+
+
+const frodo = new Hobbit('Mr Baggins', 33, 'blue', 'black')
+// console.log(Hobbit);
+// console.log(frodo.smite());
+// console.log(frodo.steal());
+// console.log(frodo.greet('Sam'));
+
+console.log(frodo);
+
+
 
